@@ -36,10 +36,10 @@ public class ElementsPageTest extends BaseTest {
         interactionsPage = new InteractionsPage();
         bookStorePage = new BookStorePage();
         js =  (JavascriptExecutor) driver;
-
-
-
     }
+
+
+    //Elements/Textbox
     @Test
     public void userCanClickOnTextBox() {
         homePage.clickOnCard("Elements");
@@ -105,8 +105,10 @@ public class ElementsPageTest extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL1);
         String textBoxTitle = "Text Box";
         Assert.assertEquals(elementsPage.TextBoxHeader.getText(), textBoxTitle);
-
     }
+
+
+    //Elements/Checkbox
 
     @Test
     public void clickOnCheckBox() {
@@ -145,8 +147,10 @@ public class ElementsPageTest extends BaseTest {
                 "wordFile\n" +
                 "excelFile";
         Assert.assertEquals(elementsPage.ResultText.getText(), notification);
-
     }
+
+
+    //Elements/RadioButton
 
     @Test
     public void clickOnRadioButton() {
@@ -188,6 +192,9 @@ public class ElementsPageTest extends BaseTest {
         String expectedURL3 = excelReader.getStringData("URL", 4, 2);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL3);
     }
+
+
+    //Elements/WebTables
     @Test
     public void clickOnWebTables() {
         homePage.clickOnCard("Elements");
@@ -289,6 +296,9 @@ public class ElementsPageTest extends BaseTest {
         Assert.assertEquals(elementsPage.userFields.get(25).getText(), newSalary);
 
     }
+
+
+    //Elements/Buttons
     @Test
     public void clickOnButtons() {
         homePage.clickOnCard("Elements");
@@ -324,16 +334,17 @@ public class ElementsPageTest extends BaseTest {
     }
 
     @Test
-    public void clickOnLeftClickButton() throws InterruptedException {
+    public void clickOnLeftClickButton() {
         homePage.clickOnCard("Elements");
         elementsPage.clickOnButtons();
-        Thread.sleep(2000);
+        waitForClickability(elementsPage.clickButton.get(2));
         elementsPage.clickOnLeftClickButton();
         Assert.assertTrue(isDisplayed(elementsPage.LeftClickMessage));
         String expectedURL5 = excelReader.getStringData("URL", 4, 4);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL5);
 
     }
+    //Elements/Links
     @Test
     public void clickOnLinks() {
         homePage.clickOnCard("Elements");
@@ -362,9 +373,8 @@ public class ElementsPageTest extends BaseTest {
             }
         }
         Assert.assertEquals(driver.getCurrentUrl(), homeURL);
-
-
     }
+
     @Test
     public void clickOnDynamicHomeLink() {
         homePage.clickOnCard("Elements");
@@ -384,8 +394,6 @@ public class ElementsPageTest extends BaseTest {
             }
         }
         Assert.assertEquals(driver.getCurrentUrl(), homeURL);
-
-
     }
 
     @Test
@@ -451,8 +459,8 @@ public class ElementsPageTest extends BaseTest {
         String expectedURL6 = excelReader.getStringData("URL", 4, 5);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL6);
 
-
     }
+
     @Test
     public void clickOnForbiddenAPI() {
         homePage.clickOnCard("Elements");
@@ -463,9 +471,8 @@ public class ElementsPageTest extends BaseTest {
         Assert.assertEquals(elementsPage.ApiResponse.getText(), message2);
         String expectedURL6 = excelReader.getStringData("URL", 4, 5);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL6);
-
-
     }
+
     @Test
     public void clickOnNotFound() {
         homePage.clickOnCard("Elements");
@@ -476,9 +483,8 @@ public class ElementsPageTest extends BaseTest {
         Assert.assertEquals(elementsPage.ApiResponse.getText(), message2);
         String expectedURL6 = excelReader.getStringData("URL", 4, 5);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL6);
-
-
     }
+    //Elements/BrokenLinks
     @Test
     public void clickOnBrokenLinks() {
         homePage.clickOnCard("Elements");
@@ -507,8 +513,11 @@ public class ElementsPageTest extends BaseTest {
         Assert.assertFalse(isDisplayed(elementsPage.BrokenLinksHeader) );
         String statusCode500 = "http://the-internet.herokuapp.com/status_codes/500";
         Assert.assertEquals(driver.getCurrentUrl(), statusCode500);
-
     }
+
+
+    //Elements/UploadDownload
+
     @Test
     public void clickOnUploadAndDownload() {
         homePage.clickOnCard("Elements");
@@ -551,6 +560,9 @@ public class ElementsPageTest extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL8);
 
     }
+
+    //Elements/DznamicProperties
+
     @Test
     public void clickOnDynamicProperties() {
         homePage.clickOnCard("Elements");
@@ -572,8 +584,10 @@ public class ElementsPageTest extends BaseTest {
         Thread.sleep(5000);
         Assert.assertTrue(isDisplayed(elementsPage.VisibleAfter));
         Assert.assertTrue(isDisplayed(elementsPage.RedColorText));
-
     }
+
+
+    //Elements/LastItemsFromEachSubmeni
 
   @Test
   public void clickOnPractiseFormOnElementPage() {
@@ -581,26 +595,23 @@ public class ElementsPageTest extends BaseTest {
       String expectedURL = excelReader.getStringData("URL", 1, 2);
       Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
       wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.TextBox));
-      //js.executeScript("window.scrollBy(0,550)", "");
       elementsPage.clickOnClose();
       wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.bookStore.get(5)));
       elementsPage.clickOnFormsSubmenu();
-    //  js.executeScript("window.scrollBy(0,750)", "");
       elementsPage.clickOnPractiseform();
       String expectedURL10 = excelReader.getStringData("URL", 7, 0);
       Assert.assertEquals(driver.getCurrentUrl(), expectedURL10);
       String practise = "Practice Form";
       Assert.assertEquals(formsPage.PractiseFormsHeader.getText(), practise);
   }
+
     @Test
     public void clickOnModalDialogOnElementPage() {
         homePage.clickOnCard("Elements");
         String expectedURL = excelReader.getStringData("URL", 1, 2);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
         wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.TextBox));
-        //js.executeScript("window.scrollBy(0,550)", "");
         elementsPage.clickOnClose();
-       //wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.bookStore.get(5)));
         elementsPage.clickOnAlertsSubmenu();
         js.executeScript("window.scrollBy(0,450)", "");
         wdwait.until(ExpectedConditions.elementToBeClickable(alertFrameWindowsPage.modalDialogs.get(1)));
@@ -613,7 +624,7 @@ public class ElementsPageTest extends BaseTest {
 
 
     @Test
-    public void clickOnSelectMenuOnElementPage() throws InterruptedException {
+    public void clickOnSelectMenuOnElementPage()  {
         homePage.clickOnCard("Elements");
         String expectedURL = excelReader.getStringData("URL", 1, 2);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
@@ -623,7 +634,6 @@ public class ElementsPageTest extends BaseTest {
         elementsPage.clickOnWidgetSubmenu();
         wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.select.get(1)));
         scrollToElement(elementsPage.select.get(1));
-     //  wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.select.get(1)));
         elementsPage.clickOnSelectMenu();
         String expectedURL10 = excelReader.getStringData("URL", 13, 8);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL10);
@@ -642,7 +652,6 @@ public class ElementsPageTest extends BaseTest {
         elementsPage.clickOnInteractionsSubmenu();
         wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.draggable.get(3)));
        scrollToElement(elementsPage.draggable.get(3));
-        //  wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.select.get(1)));
         elementsPage.clickOnDraggable();
         String expectedURL10 = excelReader.getStringData("URL", 16, 4);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL10);
@@ -662,11 +671,9 @@ public class ElementsPageTest extends BaseTest {
       String expectedURL = excelReader.getStringData("URL", 1, 2);
       Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
       wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.TextBox));
-      //js.executeScript("window.scrollBy(0,550)", "");
       elementsPage.clickOnClose();
       wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.bookStore.get(5)));
       elementsPage.clickOnBookStore();
-      // js.executeScript("window.scrollBy(0,750)", "");
       wdwait.until(ExpectedConditions.elementToBeClickable(elementsPage.bookstoreApi.get(4)));
       scrollToElement(elementsPage.bookstoreApi.get(4));
       elementsPage.clickOnBookStoreApi();

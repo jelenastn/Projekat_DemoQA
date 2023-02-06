@@ -28,8 +28,8 @@ public class BookstorePageTest extends BaseTest {
         homePage = new HomePage();
         bookStorePage = new BookStorePage();
         js =  (JavascriptExecutor) driver;
-
     }
+
     @Test
     public void userCanLoginAndLogoutWithValidCredentials() throws InterruptedException {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -57,6 +57,8 @@ public class BookstorePageTest extends BaseTest {
         }
 
     }
+
+
     @Test
     public void userCanNotLoginWithoutUsername() throws InterruptedException {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -84,6 +86,7 @@ public class BookstorePageTest extends BaseTest {
 
     }
 
+
     @Test
     public void userCanNotLoginWithoutPassword() throws InterruptedException {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -109,6 +112,7 @@ public class BookstorePageTest extends BaseTest {
         }
 
     }
+
     @Test
     public void userCanNotLoginWithoutPasswordAndUsername() throws InterruptedException {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -131,6 +135,7 @@ public class BookstorePageTest extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL1);
 
     }
+
     @Test
     public void userCanNotLoginWithInvalidPassword() throws InterruptedException {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -209,7 +214,7 @@ public class BookstorePageTest extends BaseTest {
            bookStorePage.clickOnProfile();
            String expectedURL3 = excelReader.getStringData("URL", 19, 2);
            Assert.assertEquals(driver.getCurrentUrl(), expectedURL3);
-          wdwait.until(ExpectedConditions.elementToBeClickable(bookStorePage.book1));
+           wdwait.until(ExpectedConditions.elementToBeClickable(bookStorePage.book1));
            Assert.assertTrue(isDisplayed(bookStorePage.book1));
 
         }
@@ -236,9 +241,9 @@ public class BookstorePageTest extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL2);
         wdwait.until(ExpectedConditions.elementToBeClickable(bookStorePage.book1));
         Assert.assertTrue(isDisplayed(bookStorePage.book1));
-
-
     }
+
+
     @Test(priority = 30)
     public void userCanDeleteOrderedBook() throws InterruptedException {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -302,8 +307,8 @@ public class BookstorePageTest extends BaseTest {
         Assert.assertTrue(isDisplayed(bookStorePage.loginButton));
         Assert.assertFalse(isDisplayed(bookStorePage.logoutButton));
 
-
     }
+
     @Test
     public void userCanOrderAndDeleteTwoBooks() throws InterruptedException {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -359,9 +364,9 @@ public class BookstorePageTest extends BaseTest {
         driver.switchTo().alert().accept();
         Assert.assertFalse(isDisplayed(bookStorePage.book1));
         Assert.assertFalse(isDisplayed(bookStorePage.book2));
-
-
     }
+
+
     @Test
     public void UserCanClickOnProfile() {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -377,6 +382,8 @@ public class BookstorePageTest extends BaseTest {
         Assert.assertEquals(bookStorePage.BookStoreProfileHeader.getText(), title);
 
     }
+
+
     @Test
     public void userCanClickOnBookStoreAPI() throws InterruptedException {
         js.executeScript("window.scrollBy(0,350)", "");
@@ -392,8 +399,8 @@ public class BookstorePageTest extends BaseTest {
         String titleAPI = "Book Store API\n" +
                 " v1 ";
         Assert.assertEquals(bookStorePage.BookStoreAPIHeader.getText(), titleAPI);
-
     }
+
 
     @AfterMethod
     public void driverClose()   {

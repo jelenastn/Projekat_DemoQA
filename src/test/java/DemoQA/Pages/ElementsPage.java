@@ -15,11 +15,9 @@ import static DemoQA.Base.BaseTest.driver;
 public class ElementsPage {
     public ElementsPage() {
         PageFactory.initElements(driver, this);
-
     }
 
-  /* @FindBy(className = "menu-list")
-    public List<WebElement> meni;*/
+
     @FindBy(id = "item-0")
     public
   WebElement TextBox;
@@ -243,13 +241,7 @@ WebElement cadress;
     WebElement UploadedNotification;
 
     //------------------------------------------------------
-  /*  public void clickOnMenu() {
-      for (int i = 0; i < meni.size(); i++) {
-                meni.get(i).click();
-                break;
 
-        }
-    }*/
 
     public void clickOnTextBox(){
         TextBox.click();
@@ -322,15 +314,15 @@ WebElement cadress;
       email2.sendKeys(email1);
 
     }
-  public void insertCurrentAdress(String cadress1){
+    public void insertCurrentAdress(String cadress1){
     cadress.sendKeys(cadress1);
 
   }
-  public void insertPermanentAdress(String padress1){
+     public void insertPermanentAdress(String padress1){
     padress.sendKeys(padress1);
 
   }
-  public void clickOnSubmit(){
+    public void clickOnSubmit(){
   SubmitButton.click();
   }
     public void clickOnCheckBoxIcon(){
@@ -381,10 +373,10 @@ WebElement cadress;
         ValidLink.click();
     }
 
-public void clickOnBrokenLink(){
+    public void clickOnBrokenLink(){
         BrokenLink.click();
 }
-public  void clickOnHomeSimpleLink(){
+    public  void clickOnHomeSimpleLink(){
         HomeSimpleLink.click();
 }
     public  void clickOnHomeDynamicLink(){
@@ -455,9 +447,6 @@ public  void clickOnHomeSimpleLink(){
             robot.keyRelease(KeyEvent.VK_ENTER);
             robot.delay(3000);
 
-//        }
-//        catch(Exception e) {
-//            log.error(e);
-//        }
+
     }
 }
